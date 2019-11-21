@@ -1,6 +1,6 @@
-FROM docker.io/urbanek/ubuntu-r:18.04-3.5.3
+FROM docker.com/r/varunppanicker/rcloudtest
 
-MAINTAINER Simon Urbanek <simon.urbanek@R-project.org>
+MAINTAINER Varun
 
 RUN apt-get update -qq && apt-get upgrade -y
 
@@ -8,8 +8,8 @@ RUN apt-get install -y --no-install-recommends \
 gettext redis-server rsync curl libxml2-dev python-dev \
 vim && rm -rf /var/lib/apt/lists/*
 
-RUN useradd -m -s /bin/bash -U rcloud
-RUN mkdir /data && chown rcloud /data
+RUN useradd -m -s /bin/bash -U varun
+RUN mkdir /data && chown varun /data
 RUN chown rcloud "`Rscript -e 'cat(.libPaths()[1])'`"
 
 USER rcloud:rcloud
