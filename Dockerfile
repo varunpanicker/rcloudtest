@@ -29,4 +29,3 @@ RUN mkdir -p /data/rcloud/data/rcs
 EXPOSE 8080
 
 CMD ["/data/rcloud/scripts/run-rcloud.sh"]
-
