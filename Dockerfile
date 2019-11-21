@@ -1,4 +1,4 @@
-FROM docker.com/r/varunppanicker/rcloudtest
+FROM docker.io/urbanek/ubuntu-r:18.04-3.5.3
 
 MAINTAINER Varun
 
