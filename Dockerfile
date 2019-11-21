@@ -8,7 +8,7 @@ RUN apt-get install -y --no-install-recommends gettext redis-server rsync curl l
 
 RUN useradd -m -s /bin/bash -U varun
 RUN mkdir /data && chown varun /data
-RUN chown rcloud "`Rscript -e 'cat(.libPaths()[1])'`"
+RUN chown varun "`Rscript -e 'cat(.libPaths()[1])'`"
 
 USER varun:varun
 
