@@ -4,9 +4,7 @@ MAINTAINER Varun
 
 RUN apt-get update -qq && apt-get upgrade -y
 
-RUN apt-get install -y --no-install-recommends
-gettext redis-server rsync curl libxml2-dev python-dev
-vim && rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y --no-install-recommends gettext redis-server rsync curl libxml2-dev python-dev vim && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m -s /bin/bash -U varun
 RUN mkdir /data && chown varun /data
@@ -14,8 +12,7 @@ RUN chown rcloud "`Rscript -e 'cat(.libPaths()[1])'`"
 
 USER varun:varun
 
-RUN cd /data &&
-  git clone https://github.com/att/rcloud.git
+RUN cd /data && git clone https://github.com/att/rcloud.git
 RUN cd /data/rcloud && git checkout 2.1.2 && MAKEFLAGS=-j8 sh scripts/bootstrapR.sh
 RUN cd /data/rcloud && sh scripts/build.sh --no-js
 RUN for i in tmp run; do if [ ! -e /data/rcloud/$i ]; then mkdir /data/rcloud/$i && chmod 0777 /data/rcloud/$i; fi; done
@@ -29,3 +26,4 @@ RUN mkdir -p /data/rcloud/data/rcs
 EXPOSE 8080
 
 CMD ["/data/rcloud/scripts/run-rcloud.sh"]
+
