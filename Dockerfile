@@ -4,8 +4,8 @@ MAINTAINER Varun
 
 RUN apt-get update -qq && apt-get upgrade -y
 
-RUN apt-get install -y --no-install-recommends \
-gettext redis-server rsync curl libxml2-dev python-dev \
+RUN apt-get install -y --no-install-recommends
+gettext redis-server rsync curl libxml2-dev python-dev
 vim && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m -s /bin/bash -U varun
@@ -14,7 +14,7 @@ RUN chown rcloud "`Rscript -e 'cat(.libPaths()[1])'`"
 
 USER varun:varun
 
-RUN cd /data && \
+RUN cd /data &&
   git clone https://github.com/att/rcloud.git
 RUN cd /data/rcloud && git checkout 2.1.2 && MAKEFLAGS=-j8 sh scripts/bootstrapR.sh
 RUN cd /data/rcloud && sh scripts/build.sh --no-js
