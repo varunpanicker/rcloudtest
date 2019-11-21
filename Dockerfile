@@ -12,7 +12,7 @@ RUN useradd -m -s /bin/bash -U varun
 RUN mkdir /data && chown varun /data
 RUN chown rcloud "`Rscript -e 'cat(.libPaths()[1])'`"
 
-USER rcloud:rcloud
+USER varun:varun
 
 RUN cd /data && \
   git clone https://github.com/att/rcloud.git
