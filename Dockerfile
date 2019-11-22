@@ -7,8 +7,8 @@ RUN apt-get update -qq && apt-get upgrade -y
 RUN apt-get install -y --no-install-recommends gettext redis-server rsync curl libxml2-dev python-dev vim && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m -s /bin/bash -U rcloud
-RUN chown rcloud ""Rscript -e 'cat(.libPaths()[1])'""
 RUN mkdir /data && chown rcloud /data
+RUN chown rcloud "`Rscript -e 'cat(.libPaths()[1])'`"
 
 USER rcloud:rcloud
 
