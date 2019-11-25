@@ -18,7 +18,6 @@ RUN cd /data/rcloud && sh scripts/build.sh --no-js
 RUN for i in tmp run; do if [ ! -e /data/rcloud/$i ]; then mkdir /data/rcloud/$i && chmod 0777 /data/rcloud/$i; fi; done
 COPY rcloud.conf /data/rcloud/conf/rcloud.conf
 COPY run-rcloud.sh /data/rcloud/scripts/run-rcloud.sh
-RUN ["chmod", "a+x", "/data/rcloud/scripts/run-rcloud.sh"]
 
 RUN R --vanilla --slave -e 'install.packages(c("ulog","rcloud.solr"),,c("http://rforge.net","http://cloud.r-project.org"))'
 
